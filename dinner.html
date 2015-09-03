@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <!--programmed by mh_Yang NTNU@2015-->
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.11/angular.min.js"></script>
+        <!--<script src="http://jquery.lightbox_me.js"></script>-->
+        <script src="http://res.sentsin.com/lay/lib/layer/layer.min.js?v=1.8.5"></script>
+        <!--<script src="routes/index.js"></script>-->
+        <title>午晚餐終結者</title>
+        <link rel='stylesheet' href='/stylesheets/style.css'>
+    </head>
+
+    <body>
+        <br>
+        <div class="ttl" align="center">今天午餐/晚餐要吃...?</div>
+        <hr>
+        <div class="bgr">
+            <div class="wrap">
+                <div class="show" id="show">點選按鈕開始選擇</div>
+                <div class="btn"> <a href="javascript:void(0)" class="start" id="btn">開始</a> </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $(function(){
+        
+                var alldata = new Array("校門口客家小館", "公館極麵屋", "萬隆小館", "欣田小館", "全聯", "公館順園", "公館順園隔壁", "台科大學餐", "台師大學餐", "神秘花園", "坊敘", "操場側門肉骨茶麵", "7-11", "水源市場", "金牛座牛排", "羅斯福路肉圓", "漢堡大師", "大善園" , "隨便", "再骰一次");
+                var num = alldata.length - 1;
+                var show = $("#show");
+                var btn = $("#btn");
+                var open = false;
+    
+                function change(){
+                    var randomVal = Math.round(Math.random() * num);
+                    var prizeName = alldata[randomVal];
+                    show.text(prizeName);
+                } // change()
+        
+                function run(){
+                    if(!open){
+                        timer=setInterval(change,30);
+                        btn.removeClass('start').addClass('stop').text('停止');
+                        open = true;
+                    } //if
+                    else{
+                        clearInterval(timer);
+                        btn.removeClass('stop').addClass('start').text('開始');
+                        open = false;
+                    } // else
+                } // run()
+        
+                btn.click(function(){run();})
+            }) //end $  
+        </script>
+
+        <style>
+            body {
+                background:#FFFAF4;
+                background:-webkit-gradient(linear, left top, right top, from(#F0F0F0), to(#FFFAF4));
+            }
+            .wrap {
+                width:300px;
+                margin:100px auto;
+            }
+            .show {
+                width:300px;
+                height:300px;
+                background-color:#ff3300;
+                line-height:300px;
+                text-align:center;
+                color:#fff;
+                font-size:28px;
+                -moz-border-radius:150px;
+                -webkit-border-radius:150px;
+                border-radius:150px;
+                background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FF9600), to(#F84000), color-stop(0.5, #fb6c00));
+                -moz-box-shadow:2px 2px 10px #BBBBBB;
+                -webkit-box-shadow:2px 2px 10px #BBBBBB;
+                box-shadow:2px 2px 10px #BBBBBB;
+            }
+            .btn a {
+                display:block;
+                width:120px;
+                height:50px;
+                margin:30px auto;
+                text-align:center;
+                line-height:50px;
+                text-decoration:none;
+                color:#fff;
+                -moz-border-radius:25px;
+                -webkit-border-radius:25px;
+                border-radius:25px;
+            }
+            .ttl {
+                font-family: impact;
+                font-size:1cm;
+                font-weight: bold;
+            }
+            .btn a.start {
+                background:#80b600;
+                font-weight: bold;
+                font-size:0.6cm;
+            }
+            .btn a.start:hover {
+                background:#75a700;
+            }
+            .btn a.stop {
+                background:#00a2ff;
+            }
+            .btn a.stop:hover {
+                background:#008bdb;
+            }
+            #description {
+                margin:0px auto;
+                width:400px;
+                font-size:14px;
+            }
+            #softwhy a {
+                text-decoration:underline;
+                color:red;
+            }
+        </style>
+    </body>
+    <br>
+    <hr>
+    <div align="center">
+        <img src="http://i.imgur.com/cWVSLzY.png" height="40" >&nbsp;&nbsp;<img src="http://www.csie.ntnu.edu.tw/image/ntnulogo4.gif" height="40" width="40"><br>
+        @NTNU Speech and Machine Intelligence Laboratory (2015)
+    </div>
+</html>
